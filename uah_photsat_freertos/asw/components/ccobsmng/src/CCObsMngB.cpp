@@ -94,7 +94,7 @@ void	CCObsMng::EDROOM_CTX_Top_0::FExecObsMng_TC()
   CDTCHandler & varSSObsMng_TC = *(CDTCHandler *)Msg->data;
  
  
-varSObsMng_TC.ExecTC();
+varSSObsMng_TC.ExecTC();
 
 }
 
@@ -140,7 +140,7 @@ void	CCObsMng::EDROOM_CTX_Top_0::FProgTakeImage()
 {
    //Define interval
   Pr_Time interval;
-interval = CImageInterval
+interval = CImageInterval;
    //Program relative timer 
    ObservTimer.InformIn( interval ); 
 }
