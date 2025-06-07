@@ -34,7 +34,7 @@ void EmuGSS_TCProgram129_1::BuildTCAppData(tc_mem_descriptor_t &tc_descriptor){
 
 	//TODO 07 complete EmuGSS_TCProgram129_1::BuildTCAppData code
 
-	SetNextUInt8(1); // N=1
+
 	SetNextInt16(mThetaYaw);
 	SetNextInt16(mThetaPitch);
 	SetNextUInt8(mnum_of_samples);
@@ -61,7 +61,6 @@ EmuGSS_TCProgram129_2::EmuGSS_TCProgram129_2(uint32_t uniTime2YK,
 void EmuGSS_TCProgram129_2::BuildTCAppData(tc_mem_descriptor_t &tc_descriptor){
 
 	//TODO 09 complete EmuGSS_TCProgram129_2::BuildTCAppData code
-	SetNextUInt8(1); // N=1
 	SetNextFloat(mKp);
 	SetNextFloat(mKpi);
 	SetNextFloat(mKd);
