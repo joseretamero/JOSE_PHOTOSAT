@@ -19,6 +19,7 @@ CCTCManager::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(CCTCManager &act,
 	EDROOMcomponent(act),
 	Msg(EDROOMcomponent.Msg),
 	MsgBack(EDROOMcomponent.MsgBack),
+	ObsMng(EDROOMcomponent.ObsMng),
 	BKGExecCtrl(EDROOMcomponent.BKGExecCtrl),
 	HK_FDIRCtrl(EDROOMcomponent.HK_FDIRCtrl),
 	RxTC(EDROOMcomponent.RxTC),
@@ -34,6 +35,7 @@ CCTCManager::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(EDROOM_CTX_Top_0 &context):
 	EDROOMcomponent(context.EDROOMcomponent),
 	Msg(context.Msg),
 	MsgBack(context.MsgBack),
+	ObsMng(context.ObsMng),
 	BKGExecCtrl(context.BKGExecCtrl),
 	HK_FDIRCtrl(context.HK_FDIRCtrl),
 	RxTC(context.RxTC),
@@ -107,6 +109,21 @@ void	CCTCManager::EDROOM_CTX_Top_0::FFwdToBKGTCExec()
 	*pSBKGTC_Data=VCurrentTC;  
    //Send message 
    BKGExecCtrl.send(SBKGTC,pSBKGTC_Data,&EDROOMPoolCDTCHandler); 
+}
+
+
+
+void	CCTCManager::EDROOM_CTX_Top_0::FFwdToObsMngTC()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSSObsMng_TC_Data = EDROOMPoolCDTCHandler.AllocData();
+	
+		// Complete Data 
+	
+	*pSSObsMng_TC_Data=VCurrentTC;
+   //Send message 
+   ObsMng.send(SSObsMng_TC,pSSObsMng_TC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -211,6 +228,16 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GAcceptTC()
 {
 
 return VAcceptReport.IsAccepted();
+
+}
+
+
+
+bool	CCTCManager::EDROOM_CTX_Top_0::GFwdObsMng()
+
+{
+
+return VTCExecCtrl.IsObsMngTC();
 
 }
 
@@ -393,6 +420,19 @@ void CCTCManager::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					//Branch taken is HandleTC_FwdToBKGTCExec
 					edroomCurrentTrans.localId =
 						HandleTC_FwdToBKGTCExec;
+
+					//Next State is Ready
+					edroomNextState = Ready;
+				 } 
+				//Evaluate Branch FwdObsMngTC
+				else if( GFwdObsMng() )
+				{
+					//Send Asynchronous Message 
+					FFwdToObsMngTC();
+
+					//Branch taken is HandleTC_FwdObsMngTC
+					edroomCurrentTrans.localId =
+						HandleTC_FwdObsMngTC;
 
 					//Next State is Ready
 					edroomNextState = Ready;

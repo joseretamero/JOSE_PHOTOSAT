@@ -35,7 +35,7 @@ public:
 	 */
 	 enum TEDROOMCCObsMngSignal { EDROOMSignalTimeout, 
 							EDROOMSignalDestroy, 
-							SObservTC };
+							SSObsMng_TC };
 
 	/**
 	 * \class CCObsMng::CEDROOMMemory
@@ -90,8 +90,8 @@ public:
 	//******************  Component Communication Ports *******************
 	// ********************************************************************
 
-	//! ObservCtrl Component Port
-	CEDROOMInterface	ObservCtrl;
+	//! ObsMng Component Port
+	CEDROOMInterface	ObsMng;
 
 
 	// ********************************************************************
@@ -174,7 +174,7 @@ public:
 	 */
 	enum TEDROOMCCObsMngSignal { EDROOMSignalTimeout,
 		EDROOMSignalDestroy,
-		SObservTC };
+		SSObsMng_TC };
 
 
 		friend class CCObsMng;
@@ -189,7 +189,7 @@ public:
 		CEDROOMMessage * &MsgBack;
 
 		//!Component ports
-		CEDROOMInterface & ObservCtrl;
+		CEDROOMInterface & ObsMng;
 		CEDROOMTimingInterface & ObservTimer;
 		CEDROOMTimingInterface & AttCtrlTimer;
 
@@ -201,17 +201,16 @@ public:
 
 		//!Transition Identifiers
 		enum TEDROOMTransitionID{Init,
-			ExecTC,
+			ExecObsMng,
 			DoAttCtrl,
-			DoAttCtrl_ToObservation,
-			DoAttCtrl_ToStandBy,
+			DoAttCtrl_EvNewObs,
+			DoAttCtrl_ProgAttCtrl,
 			TakeImage,
-			TakeImage_LastImage,
-			TakeImage_NextImage,
+			TakeImage_EvDoAttCtrl,
+			TakeImage_ProgTakeImage,
 			EDROOMMemoryTrans };
 
 		//!Constants
-		const Pr_Time CAttitudePeriod;
 		const Pr_Time CImageInterval;
 
 
@@ -256,7 +255,7 @@ public:
 		/**
 		 * \brief  
 		 */
-		void	FDoActtitudeCtrl();
+		void	FDoAttitudeCtrl();
 
 		/**
 		 * \brief  
@@ -266,7 +265,7 @@ public:
 		/**
 		 * \brief  
 		 */
-		void	FExecCameraMngTC();
+		void	FExecObsMng_TC();
 
 		/**
 		 * \brief  
