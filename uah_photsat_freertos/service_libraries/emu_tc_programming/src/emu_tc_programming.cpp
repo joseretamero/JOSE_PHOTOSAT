@@ -9,7 +9,7 @@
 
 #define FT_0010_TIME_step0 (OBT_AFTER_POWER_ON + 5)
 #define FT_0010_TIME_step1 (OBT_AFTER_POWER_ON + 8)
-#define FT_0010_TIME_step2 (OBT_AFTER_POWER_ON +100)
+
 
 
 #ifdef FT_UAH_PHOTSAT_SERV_129_0010
@@ -38,11 +38,11 @@ EmuGSS_TCProgram129_1 prog_FT_0010_step1(FT_0010_TIME_step1,
 #define FT_0020_TIME_step8 (OBT_AFTER_POWER_ON + 60)
 
 EmuGSS_TCProgram12_5_Value_UINT8 prog_FT_0020_step_0(FT_0020_TIME_step0,
-		"FT_UAH_PHOTSAT_Monitoring_0020 step 0, Config PMODID 0 for monitoring PID 13",0, 13, 1, 1, 0xFF, 0, 0x4003);
+		"FT_UAH_PHOTSAT_Monitoring_0020 step 0, Config PMONID 0 for monitoring PID 13",0, 13, 1, 1, 0xFF, 0, 0x4003);
 
 
 EmuGSS_TCProgram12_5_Value_UINT8 prog_FT_0020_step_1(FT_0020_TIME_step1,
-		"FT_UAH_PHOTSAT_Monitoring_0020 step 1, Config PMODID 1 for monitoring PID 14",1, 14, 1, 1, 0xFF,  0, 0x4003);
+		"FT_UAH_PHOTSAT_Monitoring_0020 step 1, Config PMONID 1 for monitoring PID 14",1, 14, 1, 1, 0xFF,  0, 0x4003);
 
 
 EmuGSS_TCProgram12_1 prog_FT_0020_step2(FT_0020_TIME_step2,
