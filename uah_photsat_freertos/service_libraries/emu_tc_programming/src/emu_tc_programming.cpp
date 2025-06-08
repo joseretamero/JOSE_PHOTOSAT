@@ -3,9 +3,9 @@
 #include <public/emu_gss_v1.h>
 
 //TODO 10 Complete FT_UAH_PHOTSAT_SERV_129_0010  done
-//#define FT_UAH_PHOTSAT_SERV_129_0010
+#define FT_UAH_PHOTSAT_SERV_129_0010
 
-#define FT_UAH_PHOTSAT_SERV_129_FDIR_0020
+//#define FT_UAH_PHOTSAT_SERV_129_FDIR_0020
 
 #define FT_0010_TIME_step0 (OBT_AFTER_POWER_ON + 5)
 #define FT_0010_TIME_step1 (OBT_AFTER_POWER_ON + 8)
@@ -19,7 +19,7 @@ EmuGSS_TCProgram129_2 prog_FT_0010_step0(FT_0010_TIME_step0,
 EmuGSS_TCProgram129_1 prog_FT_0010_step1(FT_0010_TIME_step1,
 	"FT_UAH_PHOTSAT_FDIR_0010 step 1, Observation ThetaPitch = 500 mins, ThetaYaw = 400 mins, take 6 images",500,400,6);
 
-EmuGSS_TCProgram128_1 prog_FT_0010_TIME_step_2(FT_0010_TIME_step2, "END FUNCTIONAL TEST");
+
 #endif
 
 
