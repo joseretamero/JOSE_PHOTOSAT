@@ -19,7 +19,7 @@ CCObsMng::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(CCObsMng &act,
 	ObsMng(EDROOMcomponent.ObsMng),
 	ObservTimer(EDROOMcomponent.ObservTimer),
 	AttCtrlTimer(EDROOMcomponent.AttCtrlTimer),
-	CImageInterval(0,500000),
+	CImageInterval(1,0),
 	VNextTimeOut(EDROOMpVarVNextTimeOut)
 {
 }
@@ -32,7 +32,7 @@ CCObsMng::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(EDROOM_CTX_Top_0 &context):
 	ObsMng(context.ObsMng),
 	ObservTimer(context.ObservTimer),
 	AttCtrlTimer(context.AttCtrlTimer),
-	CImageInterval(0,500000),
+	CImageInterval(1,0),
 	VNextTimeOut(context.VNextTimeOut)
 {
 
@@ -110,7 +110,7 @@ void	CCObsMng::EDROOM_CTX_Top_0::FInit()
  
  
 time.GetTime(); // Get current monotonic time   
-time+=Pr_Time(0,100000); // Add X sec + Y microsec    
+time+=Pr_Time(1,500000); // Add X sec + Y microsec    
  
  
    //Program absolute timer 
@@ -128,7 +128,7 @@ void	CCObsMng::EDROOM_CTX_Top_0::FProgAttitudeCtrl()
  
  
 time.GetTime(); // Get current monotonic time
-time += Pr_Time(0,100000); // Add X sec + Y microsec
+time += Pr_Time(0,75000); // Add X sec + Y microsec
    //Program absolute timer 
    AttCtrlTimer.InformAt( time ); 
 }
